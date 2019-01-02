@@ -8,7 +8,7 @@
 - Scheduler use firebase to save your schedule in database for next used.
 - You must edit your app id and others.
 
-##### App.js
+### App.js
 
 - Change this part of code. Copy your firebase project information to this code.
 
@@ -27,7 +27,7 @@
     };
 ```
 
-### install
+## install
 
 In your console
 
@@ -35,7 +35,7 @@ In your console
 $ npm install
 ```
 
-### run
+## run
 
 In your console
 
@@ -45,7 +45,7 @@ $ npm start
 
 ## Example windows
 
-#### Add subject part
+### Add subject part
 
 - Fill information of your subject.
 - Click add to add subject to your schedule.
