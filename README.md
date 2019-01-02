@@ -54,18 +54,18 @@ $ npm start
 
 ![Add subject](https://github.com/juierror/scheduler/blob/master/public/scheduler01.JPG)
 
-#### Detail of subject part
+### Detail of subject part
 
 - Click delete to delete subject
 - Don't delete Example!!!
   ![Detail](https://github.com/juierror/scheduler/blob/master/public/scheduler02.JPG)
 
-#### Table part
+### Table part
 
 - Click block of schedule to delete that subject from table.
   ![Add subject](https://github.com/juierror/scheduler/blob/master/public/scheduler03.JPG)
 
-#### Save
+### Save
 
 - After all, click save to keep data in firebase database.
   ![Detail](https://github.com/juierror/scheduler/blob/master/public/scheduler04.JPG)
