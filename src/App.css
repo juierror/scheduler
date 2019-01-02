@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 
 .App-logo {
@@ -29,4 +30,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.adder {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.adder-button {
+  text-align: center;
+  margin: 20px;
 }
