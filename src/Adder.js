@@ -1,20 +1,17 @@
 import React, { Component } from "react";
 
+const DEFAULT_STATE = {
+  da: "mon",  s: "",  t: "",
+  a: 8,  b: 0,  c: 8,  d: 30,
+  color: "#ff55ff"
+};
+
 // This class use to make part of input to add subject to table
 class Adder extends Component {
   constructor() {
     super();
     // state keep temporary data
-    this.state = {
-      da: "mon",
-      s: "",
-      t: "",
-      a: 8,
-      b: 0,
-      c: 8,
-      d: 30,
-      color: "#ff55ff"
-    };
+    this.state = DEFAULT_STATE;
     // encoder change time to index
     this.encoder = {
       "8 0": 0,
@@ -82,6 +79,33 @@ class Adder extends Component {
   changeColor = () => {
     this.setState({ color: this.randomColor() });
   };
+
+  add = () => {
+    if (this.state.s == "") {
+      alert("put some subject");
+      return;
+    }
+    var start = this.encoder[this.state.a + " " + this.state.b];
+    var end = this.encoder[this.state.c + " " + this.state.d];
+    var check = this.props.changeTable(
+      this.state.da,
+      parseInt(this.props.id),
+      parseInt(start),
+      parseInt(end)
+    );
+    if (check > 0) {
+      this.props.addDetail(
+        this.state.da,
+        this.state.s,
+        this.state.t,
+        this.props.id,
+        this.state.color
+      );
+      this.props.incrementId();
+    } else {
+      alert("conflict");
+    }
+  }
 
   render() {
     return (
@@ -188,58 +212,21 @@ class Adder extends Component {
           <div className="adder-button">
             <button
               className="btn btn-outline-primary"
-              onClick={() => {
-                if (this.state.s == "") {
-                  alert("put some subject");
-                  return;
-                }
-                var start = this.encoder[this.state.a + " " + this.state.b];
-                var end = this.encoder[this.state.c + " " + this.state.d];
-                var check = this.props.changeTable(
-                  this.state.da,
-                  parseInt(this.props.id),
-                  parseInt(start),
-                  parseInt(end)
-                );
-                if (check > 0) {
-                  this.props.addDetail(
-                    this.state.da,
-                    this.state.s,
-                    this.state.t,
-                    this.props.id,
-                    this.state.color
-                  );
-                  this.props.incrementId();
-                } else {
-                  alert("conflict");
-                }
-              }}
+              onClick={this.add}
             >
               Add
             </button>
             {"          "}
             <button
               className="btn btn-outline-success"
-              onClick={() => {
-                this.changeColor();
-              }}
+              onClick={this.changeColor}
             >
               ChangeColor
             </button>
             {"         "}
             <button
               className="btn btn-outline-dark"
-              onClick={() => {
-                this.setState({
-                  da: "mon",
-                  s: "",
-                  t: "",
-                  a: 8,
-                  b: 0,
-                  c: 8,
-                  d: 30
-                });
-              }}
+              onClick={this.setState(DEFAULT_STATE)}
             >
               Reset
             </button>
