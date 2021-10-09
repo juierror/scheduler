@@ -82,26 +82,28 @@ class Adder extends Component {
 
   addEntry = () => {
     if (this.state.subj == "") {
-      alert("put some subject");
+      alert("subject field is required");
       return;
     }
 
     let start = this.encoder[this.state.h1 + " " + this.state.m1];
     let end = this.encoder[this.state.h2 + " " + this.state.m2];
 
-    var sucess = this.props.changeTable(this.state.day, this.props.id, start, end);
+    if (start >= end) {
+      alert("start time must be earlier than end time");
+      return;
+    }
 
-    if (sucess > 0) {
+    if (this.props.changeTable(this.state.day, start, end)) {
       this.props.addDetail(
         this.state.day,
         this.state.subj,
         this.state.detail,
-        this.props.id,
         this.state.color
       );
       this.props.incrementId();
     } else {
-      alert("conflict");
+      alert("this time slot is already occupied");
     }
   }
 

@@ -262,22 +262,22 @@ class App extends Component {
         });
       });
   }
-  changeTable = (d, id, start, end) => {
-    if (start >= end) {
-      return -1;
-    }
+  changeTable = (d, start, end) => {
     var tmpT = this.state.table;
     for (var i = start; i < end; i++) {
       if (tmpT[d][i] >= 0) {
-        return -1;
+        return false;
       }
-      tmpT[d][i] = id;
+      tmpT[d][i] = this.state.id;
     }
+
     this.setState({ table: tmpT });
-    return 1;
+
+    return true;
   };
 
-  addDetail = (date, sub, det, idx, col) => {
+  addDetail = (date, sub, det, col) => {
+    var idx = this.state.id;
     var tmpList_detail = this.state.detail;
     tmpList_detail[idx] = {
       day: date,
