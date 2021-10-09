@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Block from "./Block.js";
+import Block from "./block.js";
 
 // table part contain Block
 class TimeTable extends Component {
