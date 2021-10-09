@@ -43,30 +43,11 @@ class Adder extends Component {
       "21 0": 26,
       "21 30": 26
     };
-    // color encoder change number to hex code of color
-    this.color_encoder = {
-      0: "0",
-      1: "1",
-      2: "2",
-      3: "3",
-      4: "4",
-      5: "5",
-      6: "6",
-      7: "7",
-      8: "8",
-      9: "9",
-      10: "a",
-      11: "b",
-      12: "c",
-      13: "d",
-      14: "e",
-      15: "f",
-    };
   }
 
   // random color for each subject
   randomColor = () => {
-    let out = "#"+Math.floor(Math.random()*16777215).toString(16);
+    let out = "#" + Math.floor(Math.random() * 16777215).toString(16);
     console.log(out);
     return out;
   };
