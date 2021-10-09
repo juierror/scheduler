@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 const DEFAULT_STATE = {
-  da: "mon",  s: "",  t: "",
-  a: 8,  b: 0,  c: 8,  d: 30,
+  day: "mon", subj: "", detail: "",
+  h1: 8, m1: 0, h2: 8, m2: 30,
   color: "#ff55ff"
 };
 
@@ -80,24 +80,22 @@ class Adder extends Component {
     this.setState({ color: this.randomColor() });
   };
 
-  add = () => {
-    if (this.state.s == "") {
+  addEntry = () => {
+    if (this.state.subj == "") {
       alert("put some subject");
       return;
     }
-    var start = this.encoder[this.state.a + " " + this.state.b];
-    var end = this.encoder[this.state.c + " " + this.state.d];
-    var check = this.props.changeTable(
-      this.state.da,
-      parseInt(this.props.id),
-      parseInt(start),
-      parseInt(end)
-    );
-    if (check > 0) {
+
+    let start = this.encoder[this.state.h1 + " " + this.state.m1];
+    let end = this.encoder[this.state.h2 + " " + this.state.m2];
+
+    var sucess = this.props.changeTable(this.state.day, this.props.id, start, end);
+
+    if (sucess > 0) {
       this.props.addDetail(
-        this.state.da,
-        this.state.s,
-        this.state.t,
+        this.state.day,
+        this.state.subj,
+        this.state.detail,
         this.props.id,
         this.state.color
       );
@@ -119,9 +117,9 @@ class Adder extends Component {
             <select
               name="day"
               onChange={e => {
-                this.setState({ da: e.target.value });
+                this.setState({ day: e.target.value });
               }}
-              value={this.state.da}
+              value={this.state.day}
               style={{ maxWidth: "100%" }}
             >
               <option value="mon">Mon</option>
@@ -142,9 +140,9 @@ class Adder extends Component {
               type="text"
               onChange={e => {
                 console.log(e.target.value);
-                this.setState({ s: e.target.value });
+                this.setState({ subj: e.target.value });
               }}
-              value={this.state.s}
+              value={this.state.subj}
             />
           </h5>
 
@@ -155,64 +153,64 @@ class Adder extends Component {
               id="det"
               type="text"
               onChange={e => {
-                this.setState({ t: e.target.value });
+                this.setState({ detail: e.target.value });
               }}
-              value={this.state.t}
+              value={this.state.detail}
             />
           </h5>
 
           <h5>
             Time:{"  "}
             <input
-              id="a"
+              id="h1"
               type="number"
               min="8"
               max="20"
               step="1"
-              value={this.state.a}
+              value={this.state.h1}
               onChange={e => {
-                this.setState({ a: e.target.value });
+                this.setState({ h1: e.target.value });
               }}
             />{" "}
             <input
-              id="b"
+              id="m1"
               type="number"
               min="0"
               max="30"
               step="30"
-              value={this.state.b}
+              value={this.state.m1}
               onChange={e => {
-                this.setState({ b: e.target.value });
+                this.setState({ m1: e.target.value });
               }}
             />{" "}
             to{" "}
             <input
-              id="c"
+              id="h2"
               type="number"
               min="8"
               max="21"
               step="1"
-              value={this.state.c}
+              value={this.state.h2}
               onChange={e => {
-                this.setState({ c: e.target.value });
+                this.setState({ h2: e.target.value });
               }}
             />{" "}
             <input
-              id="d"
+              id="m2"
               type="number"
               min="0"
               max="30"
               step="30"
-              value={this.state.d}
+              value={this.state.m2}
               onChange={e => {
-                this.setState({ d: e.target.value });
+                this.setState({ m2: e.target.value });
               }}
             />
           </h5>
           <div className="adder-button">
             <button
               className="btn btn-outline-primary"
-              onClick={this.add}
+              onClick={this.addEntry}
             >
               Add
             </button>
