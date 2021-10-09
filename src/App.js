@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import TimeTable from "./components/timetable.js";
-import ShowDetail from "./components/showdetail.js";
-import Adder from "./components/adder.js";
-import "./app.css";
+import TimeTable from "./components/TimeTable.js";
+import ShowDetail from "./components/ShowDetail.js";
+import Adder from "./components/Adder.js";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
