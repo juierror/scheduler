@@ -61,16 +61,12 @@ class Adder extends Component {
       13: "d",
       14: "e",
       15: "f",
-      16: "f"
     };
   }
 
   // random color for each subject
   randomColor = () => {
-    let out = "#";
-    for (let i = 0; i < 6; i++) {
-      out += this.color_encoder[Math.floor(Math.random() * 17)];
-    }
+    let out = "#"+Math.floor(Math.random()*16777215).toString(16);
     console.log(out);
     return out;
   };
